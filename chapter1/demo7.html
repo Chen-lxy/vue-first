@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--view层-->
+<div id="app">
+    {{message}}
+    {{infor.name}}
+    {{infor.age}}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0-0/axios.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        //model层
+        data:{
+            message:"hello,vue!"
+        },
+        //钩子函数，返回数据格式，属性名和返回的json要一致
+        data(){
+            return{
+                infor:{
+                    name:null,
+                    age:0
+                }
+            }
+        },
+        // 钩子函数
+        mounted(){
+            axios.get('data.json').then(response => (this.infor=response.data))
+        }
+    })
+</script>
+
+</body>
+</html>

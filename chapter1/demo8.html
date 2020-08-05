@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--view层-->
+<div id="app">
+    {{message}}
+    <p>currentTime1:{{currentTime1()}}</p>
+    <p>currentTime2:{{currentTime2}}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        //model层
+        data:{
+            message:"hello,vue!"
+        },
+        methods: {
+            currentTime1:function(){
+                return Date.now();
+            }
+        },
+        // 计算属性，相当于缓存，对于开销比methods小，用于不怎么变的数据
+        computed:{
+            currentTime2:function(){
+                return Date.now();
+            }
+        }
+    })
+</script>
+</body>
+</html>

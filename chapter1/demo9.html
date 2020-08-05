@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插槽练习</title>
+</head>
+<body>
+<!--view层-->
+<div id="app">
+    {{message}}
+    <todo>
+        <todo-title slot="todo-title" :title1="title"></todo-title>
+        <todo-item slot="todo-item" v-for="item in todoItems" :item1="item"></todo-item>
+    </todo>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    Vue.component('todo',{
+        template: '<div>\
+                        <slot name="todo-title"></slot>\
+                        <ul>\
+                            <slot name="todo-item"></slot>\
+                        </ul>\
+                    </div>'
+    });
+    Vue.component('todo-title',{
+        props:['title1'],
+        template: '<div>{{title1}}</div>'
+    });
+    Vue.component('todo-item',{
+        props:['item1'],
+        template: '<li>{{item1}}</li>'
+    });
+    var vue = new Vue({
+        el:"#app",
+        //model层
+        data:{
+            message:"hello,vue!",
+            title:"标题",
+            todoItems:['JAVA','PYTHON','C++']
+        }
+    })
+</script>
+</body>
+</html>

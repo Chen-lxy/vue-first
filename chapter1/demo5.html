@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--view层-->
+<div id="app">
+    输入的文本：
+    <input type="text" v-model="message">{{message}}
+    <input type="radio" name="sex" value="男" v-model="choose">男
+    <input type="radio" name="sex" value="女" v-model="choose">女
+    <br>
+    选中了：{{choose}}
+    <br>
+    <select name="" id="" v-model="test">
+        <option value="" disabled>--请选择--</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+    </select>
+    选中了：{{test}}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        //model层
+        data:{
+            message:"hello,vue!",
+            choose:"",
+            test:""
+        }
+    })
+</script>
+
+</body>
+</html>
